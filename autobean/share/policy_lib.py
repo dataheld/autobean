@@ -151,7 +151,8 @@ def strip_share_meta(meta: Optional[dict[str, Any]]) -> None:
         return
     for key in list(meta):
         if key.startswith("share-") or key.startswith("share_"):
-            meta[key] = "autobean-" + meta[key]
+            new_key = "autobean-" + key
+            meta[new_key] = meta.pop(key)
 
 
 class PolicyDatabase:
